@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Academic Details</legend>
+            <div class="form-group">
+                {{ form.board_percentage.label(class="form-control-label") }}
+                {% if form.board_percentage.errors %}
+                {{ form.board_percentage(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.board_percentage.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.board_percentage(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+<div class="border-top pt-5">
+    <small class="text-muted">
+        To change academic details <a class="ml-2" href="{{ url_for('academic') }}">Academic</a>
+    </small>
+    <br>
+    <small class="text-muted">
+        To change CET rank <a class="ml-2" href="{{ url_for('CET') }}">CET</a>
+    </small>
+</div>
+{% endblock content %}

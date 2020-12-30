@@ -1,0 +1,92 @@
+{%extends "layout.html" %}
+{% block content %}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Student MIS</th>
+            <th scope="col">Mess Name</th>
+            <th scope="col">Total Bill</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for MIS, mess_name, total_bill in table %}
+        <tr>
+            <td>{{ MIS }}</td>
+            <td>{{ mess_name }}</td>
+            <td>{{ total_bill }}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+<br></br>
+<br></br>
+<h3> Enter these details while updating monthly bill or when the bill is paid.</h3>
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Mess Bill Payments</legend>
+            <div class="form-group">
+                {{ form.MIS.label(class="form-control-label") }}
+                {% if form.MIS.errors %}
+                {{ form.MIS(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.MIS.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.MIS(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.has_paid.label(class="form-control-label") }}
+                {% if form.has_paid.errors %}
+                {{ form.has_paid(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.has_paid.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.has_paid(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.num_meals.label(class="form-control-label") }}
+                {% if form.num_meals.errors %}
+                {{ form.num_meals(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.num_meals.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.num_meals(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.month_bill.label(class="form-control-label") }}
+                {% if form.month_bill.errors %}
+                {{ form.month_bill(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.month_bill.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.month_bill(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

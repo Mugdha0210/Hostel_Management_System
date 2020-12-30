@@ -1,0 +1,46 @@
+{%extends "layout.html" %}
+{% block content %}
+
+<h3>Students who have paid fees</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Student MIS</th>
+            <th scope="col">Transaction ID</th>
+            <th scope="col">Payment Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for MIS, transaction_id, payment_date in table1 %}
+        <tr>
+            <td>{{ MIS }}</td>
+            <td>{{ transaction_id }}</td>
+            <td>{{ payment_date }}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+<br></br>
+<br></br>
+
+<h3>Students who have NOT paid fees</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Student MIS</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for MIS in table %}
+        <tr>
+            <td>{{ MIS[0] }}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

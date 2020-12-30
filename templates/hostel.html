@@ -1,0 +1,83 @@
+{%extends "layout.html" %}
+{% block content %}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Student MIS</th>
+            <th scope="col">Hostel Block</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Mess Name</th>
+            <th scope="col">Total Bill</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{ table[0] }}</td>
+            <td>{{ table[1] }}</td>
+            <td>{{ table[2] }}</td>
+            <td>{{ table[3] }}</td>
+            <td>{{ table[4] }}</td>
+        </tr>
+    </tbody>
+</table>
+<br></br>
+<br></br>
+<h4> Update details if necessary.</h4>
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Hostel block : {{ table[1] }}</legend>
+            <div class="form-group">
+                {{ form.room_number.label(class="form-control-label") }}
+                {% if form.room_number.errors %}
+                {{ form.room_number(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.room_number.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.room_number(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.transaction_id.label(class="form-control-label") }}
+                {% if form.transaction_id.errors %}
+                {{ form.transaction_id(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.transaction_id.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.transaction_id(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.date.label(class="form-control-label") }}
+                {% if form.date.errors %}
+                {{ form.date(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.date.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.date(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,49 @@
+{%extends "layout.html" %}
+{% block content %}
+
+
+<div class="col-md-12">
+    <div class="btn-group btn-group-lg btn-group-toggle">
+        <a class="btn btn-info" href="{{ url_for('personal') }}"> Personal Details </a>
+        <a class="btn btn-info" href="{{ url_for('academic') }}"> Academic Details </a>
+        <a class="btn btn-info" href="{{ url_for('hostel') }}"> Hostel & Mess </a>
+    </div>
+</div>
+<br></br>
+
+<div class="row">
+
+    <div class="card mb-3 col-md-8">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <img src="./static/photo.png" class="card-img" alt="profile photo">
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    {% for info in posts%}
+                    <h2 class="card-title"> Name : {{info.Student}}</h2>
+                    <h4 class="card-text">MIS : {{info.MIS}}</h4>
+                    <h4 class="card-text">Address : {{info.Address}}</h4>
+                    <h4 class="card-text">Gender : {{info.Gender}}</h4>
+                    <h4 class="card-text">Contact : {{info.Contact}}</h4>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="content-section">
+            <h3>Administrative</h3>
+            <p class='text-muted'>Admin access only. </p>
+            <div class="btn-group-vertical btn-group-lg btn-group-toggle">
+                <a class="btn btn-secondary" href="{{ url_for('hostel_admin') }}">Hostel Blocks </a>
+                <a class="btn btn-secondary" href="{{ url_for('mess_admin') }}">Mess</a>
+                <a class="btn btn-secondary" href="{{ url_for('staff_admin') }}">Hostel Staff</a>
+                <a class="btn btn-secondary" href="{{ url_for('fees_admin') }}">Student Fees Payment</a>
+
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

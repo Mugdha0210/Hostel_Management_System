@@ -1,0 +1,182 @@
+{%extends "layout.html" %}
+{% block content %}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Staff ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Job</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Works for</th>
+            <th scope="col">Outsourced</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for ID, first_name, middle_name, last_name, job, salary, works_for, isOutsourced in table %}
+        <tr>
+            <td>{{ ID }}</td>
+            <td>{{ first_name }}</td>
+            <td>{{ middle_name }}</td>
+            <td>{{ last_name }}</td>
+            <td>{{ job }}</td>
+            <td>{{ salary }}</td>
+            <td>{{ works_for }}</td>
+            <td>{{ isOutsourced }}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+<br></br>
+<br></br>
+<h3> Add / update staff member details:</h3>
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Staff details</legend>
+            <div class="form-group">
+                {{ form.ID.label(class="form-control-label") }}
+                {% if form.ID.errors %}
+                {{ form.ID(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.ID.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.ID(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.first_name.label(class="form-control-label") }}
+                {% if form.first_name.errors %}
+                {{ form.first_name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.first_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.first_name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.middle_name.label(class="form-control-label") }}
+                {% if form.middle_name.errors %}
+                {{ form.middle_name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.middle_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.middle_name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label(class="form-control-label") }}
+                {% if form.last_name.errors %}
+                {{ form.last_name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.last_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.last_name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.job.label(class="form-control-label") }}
+                {% if form.job.errors %}
+                {{ form.job(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.job.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.job(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.block_code.label(class="form-control-label") }}
+                {% if form.block_code.errors %}
+                {{ form.block_code(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.block_code.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.block_code(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+<br></br>
+<br></br>
+<h3> Add / update job details :</h3>
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Job details</legend>
+            <div class="form-group">
+                {{ form.job.label(class="form-control-label") }}
+                {% if form.job.errors %}
+                {{ form.job(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.job.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.job(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.salary.label(class="form-control-label") }}
+                {% if form.salary.errors %}
+                {{ form.salary(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.salary.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.salary(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.isOutsourced.label(class="form-control-label") }}
+                {% if form.isOutsourced.errors %}
+                {{ form.isOutsourced(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.isOutsourced.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.isOutsourced(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
